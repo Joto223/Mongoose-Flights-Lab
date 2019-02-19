@@ -1,0 +1,70 @@
+<%- include('../partials/header') %>
+
+<body>
+   <ul class= 'nav'>
+       <li><a href='/flights'>Your Flights</a></li>
+       <li><a href='/flights/new'>Schedule A New Flight</a></li>
+   </ul>
+   <h1>Flight Details</h1>
+       <table>
+           <thead>
+               <tr>
+                   <th>Airport</th>
+                   <th>Airline</th>
+                   <th>Flight Number</th>
+                   <th>Departs</th>
+                   <th>Seat</th>
+                   <th>Price</th>
+                   <span>
+                   <form action="/flights/new" method="POST" name="airport">
+                       <th>Destination
+                           <select name="airport">
+                           <option value="AUS">AUS</option>
+                           <option value="DAL">DAL</option>
+                           <option value="LAX">LAX</option>
+                           <option value="SEA">SEA</option>
+                           </select>
+                           </th>
+                       <th>Arrival
+                       <input type="date" name="departs">
+                       <input type="submit" value="Save Flight">
+                       </th>
+                   </form>
+                   </span>
+               </tr>
+           </thead>
+           <tbody>
+                   <tr>
+                       <td><%= flight.airport %></td>
+                       <td><%= flight.airline %></td>
+                       <td><%= flight.flightNo %></td>
+                       <td><%= flight.departs %></td>
+                   </tr>
+           </tbody>
+       </table>
+       <br/> <br/>
+       <div>
+       <form action='/flights/<%=flight._id%>/newTicket' method='POST'>
+        <label>Seat:
+         <input type='text' name='seat' pattern="[A-F][1-9]\d?" />
+        </label>
+        <label>Price:
+         <input type='text' name='price' />
+        </label>
+        <button type='submit'>Submit</button>
+        </form>
+       </div>
+       <div class='display-tickets'>
+       <ul>
+     <%   tickets.forEach((item) => { %>
+          <li> 
+         <%=   item.seat %>
+         <%=  item.price  %>
+        </li>
+     <%   }); %>
+        </ul>
+       </div>
+   </body>
+
+
+  <%- include('../partials/footer') %>
