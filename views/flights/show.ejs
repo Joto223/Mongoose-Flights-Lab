@@ -15,8 +15,19 @@
                    <th>Departs</th>
                    <th>Seat</th>
                    <th>Price</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   <tr>
+                   <td><%= flight.airport %></td>
+                   <td><%= flight.airline %></td>
+                   <td><%= flight.flightNo %></td>
+                   <td><%= flight.departs %></td>
+                   </tr>
+                   </tbody>
+                   </table>
                    <span>
-                   <form action="/flights/new" method="POST" name="airport">
+                   <form action="/flights/<%= flight._id %>/destinations" method="POST" name="airport">
                        <th>Destination
                            <select name="airport">
                            <option value="AUS">AUS</option>
@@ -31,18 +42,9 @@
                        </th>
                    </form>
                    </span>
-               </tr>
-           </thead>
-           <tbody>
-                   <tr>
-                       <td><%= flight.airport %></td>
-                       <td><%= flight.airline %></td>
-                       <td><%= flight.flightNo %></td>
-                       <td><%= flight.departs %></td>
-                   </tr>
-           </tbody>
-       </table>
        <br/> <br/>
+
+       <h1>Tickets</h1>
        <div>
        <form action='/flights/<%=flight._id%>/newTicket' method='POST'>
         <label>Seat:
